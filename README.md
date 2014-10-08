@@ -34,9 +34,11 @@ Example:
 var checkJson = require('check-json');
 
 var user = {
+	ID: new Object("wcded33iwhdee3xwuhue3"),
 	username: 'alberto',
 	password: 'MDAxMTIyMzM0NDU1NjY3Nw==',
-	gender: 'male'
+	gender: 'male',
+	age: 27,
 	activities: {
 		sports: 'crossfit',
 		hobby: 'electronics stuff'	
@@ -44,11 +46,13 @@ var user = {
 }
 
 checkJson(user)
+	.hasObject('ID')
 	.hasStringNotEmpty('username')
 	.hasStringNotEmpty('password')
-	.optionalString('gender')
-	.optionalStringNotEmpty('activities.sports')
-	.optionalString('activities.hobby')
+	.hasOptionalString('gender')
+	.hasNumber('age')
+	.hasOptionalStringNotEmpty('activities.sports')
+	.hasOptionalString('activities.hobby')
 	.check(function(err){
 		if(err){
 			console.log('error: ' + JSON.stringify(err)); 
