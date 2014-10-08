@@ -11,7 +11,10 @@
  ==============================================
  * 0.0.1 File creation
  * 0.0.2 added hasString & hasStringNotEmpty
- * 0.0.3 added optionalString & optionalStringNotEmpty
+ * 0.0.3 added hasoptionalString & optionalStringNotEmpty
+ * 0.0.4 method names fixes
+ * 0.0.6 added hasObject
+ * 0.0.7 added hasNumber
  ==============================================
  */
 'use strict';
@@ -37,7 +40,32 @@ var checkJson = function(data){
 	
 	}
 	
-	checkJson.hasObjectId = function(field){
+	checkJson.hasNumber = function(field){
+	
+		//gestione campi composti
+		var newData = splitFields(data, field);
+		var data2check = newData[0];
+		field = newData[1];
+		
+		if(data2check != undefined){
+		
+			if(data2check[field] != undefined)
+			{
+				if(!(typeof data2check[field] == 'number' || data2check[field] instanceof Number))
+				{
+					errors.push('field \'' + field + '\' is not a number');
+				}		
+			}else{
+				errors.push('missing field \'' + field + '\'');
+			}
+			
+		}else{
+			errors.push('missing root key');
+		}
+		return this;
+	}
+	
+	checkJson.hasObject = function(field){
 	
 		//gestione campi composti
 		var newData = splitFields(data, field);
@@ -90,7 +118,7 @@ var checkJson = function(data){
 		return this;
 	}
 	
-	checkJson.optionalStringNotEmpty = function(field){
+	checkJson.hasOptionalStringNotEmpty = function(field){
 	
 		//gestione campi composti
 		var newData = splitFields(data, field);
@@ -129,7 +157,7 @@ var checkJson = function(data){
 		return this;
 	}
 	
-	checkJson.optionalString = function(field){
+	checkJson.hasOptionalString = function(field){
 	
 		//gestione campi composti
 		var newData = splitFields(data, field);
