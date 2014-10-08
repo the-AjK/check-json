@@ -37,6 +37,31 @@ var checkJson = function(data){
 	
 	}
 	
+	checkJson.hasObjectId = function(field){
+	
+		//gestione campi composti
+		var newData = splitFields(data, field);
+		var data2check = newData[0];
+		field = newData[1];
+		
+		if(data2check != undefined){
+		
+			if(data2check[field] != undefined)
+			{
+				if(!(typeof data2check[field] == 'object' || data2check[field] instanceof Object))
+				{
+					errors.push('field \'' + field + '\' is not a object');
+				}		
+			}else{
+				errors.push('missing field \'' + field + '\'');
+			}
+			
+		}else{
+			errors.push('missing root key');
+		}
+		return this;
+	}
+	
 	checkJson.hasStringNotEmpty = function(field){
 	
 		//gestione campi composti
