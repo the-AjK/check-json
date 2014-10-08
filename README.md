@@ -1,4 +1,4 @@
-checkJson - JSON fields checking
+check-json - JSON fields checking
 -------------
 Copyright (c) 2014, Alberto Garbui (aka JK) www.ajk.altervista.org
 
@@ -6,7 +6,7 @@ All rights reserved.
 
 Usage
 -------------
-checkJson(object-literal)
+check-json(object-literal)
 Returns an chainable object whereon the following functions can be used.
 
 .hasString(key)
@@ -22,9 +22,11 @@ Returns an chainable object whereon the following functions can be used.
 
 
 Example:
--------------
 
 ```  javascript
+
+var checkJson = require('check-json');
+
 var user = {
 	username: 'alberto',
 	password: 'MDAxMTIyMzM0NDU1NjY3Nw==',
