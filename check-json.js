@@ -1,5 +1,5 @@
 /**
- * File: checkJson.js
+ * File: check-json.js
  * Module: checkJson
  * Author: Alberto Garbui
  * Created: 08/10/14
@@ -16,21 +16,24 @@
  */
 'use strict';
 
-exports.checkJson = function(data){
+var checkJson = function(data){
 
 	var checkJson = {};
 	var errors = [];
 	
-	var splitFields = function(data, field){
+	var splitFields = function(data2split, field){
 	
-		field = field.split('.');
-		for(var i=0; i<field.length-1; i++)
-		{
-			data = data[field[i]];
-		}
-		field = field[field.length-1];
-		
-		return [data, field];
+		if(data2split != undefined){
+			field = field.split('.');
+			for(var i=0; i<field.length-1; i++)
+			{
+				data2split = data2split[field[i]];
+			}
+			field = field[field.length-1];
+		}else{
+			errors.push('missing root key');
+		}		
+		return [data2split, field];
 	
 	}
 	
@@ -41,17 +44,23 @@ exports.checkJson = function(data){
 		var data2check = newData[0];
 		field = newData[1];
 		
-		if(data2check[field] != undefined)
-		{
-			if(!(typeof data2check[field] == 'string' || data2check[field] instanceof String))
+		if(data2check != undefined){
+		
+			if(data2check[field] != undefined)
 			{
-				errors.push('field \'' + field + '\' is not a string');
-			}else if(data2check[field] == '')
-			{
-				errors.push('empty field \'' + field + '\'');
-			}			
+				if(!(typeof data2check[field] == 'string' || data2check[field] instanceof String))
+				{
+					errors.push('field \'' + field + '\' is not a string');
+				}else if(data2check[field] == '')
+				{
+					errors.push('empty field \'' + field + '\'');
+				}			
+			}else{
+				errors.push('missing field \'' + field + '\'');
+			}
+			
 		}else{
-			errors.push('missing field \'' + field + '\'');
+			errors.push('missing root key');
 		}
 		return this;
 	}
@@ -119,3 +128,7 @@ exports.checkJson = function(data){
 	
 	return checkJson;
 }
+
+module.exports = function (data) {
+    return new checkJson(data);
+};
