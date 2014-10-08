@@ -8,23 +8,23 @@ Usage
 -------------
 
 check-json(object-literal)
--------------
+-----------
 Returns an chainable object whereon the following functions can be used.
 
 .hasString(key)
--------------
+-----------
 .hasString(key)
--------------
+-----------
 .hasStringNotEmpty(key)
--------------
+-----------
 .hasOptionalString(key)
--------------
+-----------
 .hasOptionalStringNotEmpty(key)
--------------
+-----------
 .hasObject(key)
--------------
+-----------
 .hasNumber(key)
--------------
+-----------
 
 
 Example:
