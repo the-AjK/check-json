@@ -6,7 +6,9 @@ All rights reserved.
 
 Usage
 -------------
+
 check-json(object-literal)
+-------------
 Returns an chainable object whereon the following functions can be used.
 
 .hasString(key)
@@ -15,9 +17,13 @@ Returns an chainable object whereon the following functions can be used.
 -------------
 .hasStringNotEmpty(key)
 -------------
-.optionalString(key)
+.hasOptionalString(key)
 -------------
-.optionalStringNotEmpty(key)
+.hasOptionalStringNotEmpty(key)
+-------------
+.hasObject(key)
+-------------
+.hasNumber(key)
 -------------
 
 

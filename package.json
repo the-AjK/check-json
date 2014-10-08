@@ -1,6 +1,6 @@
 {
   "name"         : "check-json",
-  "version"      : "0.0.5",
+  "version"      : "0.0.7",
   "description"  : "JSON fields checking",
   "license" 	 : "BSD-3-Clause",
   "author": {
