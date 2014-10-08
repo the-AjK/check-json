@@ -1,6 +1,6 @@
 {
   "name"         : "check-json",
-  "version"      : "0.0.3",
+  "version"      : "0.0.5",
   "description"  : "JSON fields checking",
   "license" 	 : "BSD-3-Clause",
   "author": {
@@ -8,16 +8,17 @@
 	"email" : "alberto.garbui@gmail.com",
 	"url" : "http://ajk.altervista.org"
   },
+  "main": "check-json.js",
   "repository": {
 	"type" : "git",
-    "url": "https://github.com/the-AjK/checkJson.git"
+    "url": "https://github.com/the-AjK/check-json.git"
   },
   "bugs": {
-	"url" : "https://github.com/the-AjK/checkJson/issues",
+	"url" : "https://github.com/the-AjK/check-json/issues",
 	"email" : "alberto.garbui@gmail.com"
   },
   "keywords": [
-    "checkJson",
+    "check-json",
 	"json",
 	"check",
 	"ajk",
